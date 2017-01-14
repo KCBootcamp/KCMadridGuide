@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
-
         setupShopsBtn();
 
     }
@@ -28,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         shopsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Navigator.navigateFromMainActivityToShopsActivity();
             }
         });
     }
