@@ -8,6 +8,7 @@ import android.widget.Button;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import es.bhavishchandnani.kcmadridguide.R;
+import es.bhavishchandnani.kcmadridguide.navigator.Navigator;
 
 public class MainActivity extends AppCompatActivity {
     @BindView(R.id.activity_main_shops_btn)
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         shopsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigator.navigateFromMainActivityToShopsActivity();
+                Navigator.navigateFromMainActivityToShopsActivity(MainActivity.this);
             }
         });
     }
