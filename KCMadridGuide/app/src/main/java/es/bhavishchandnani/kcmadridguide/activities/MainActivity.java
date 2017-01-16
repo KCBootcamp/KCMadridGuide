@@ -12,7 +12,7 @@ import es.bhavishchandnani.kcmadridguide.navigator.Navigator;
 
 public class MainActivity extends AppCompatActivity {
     @BindView(R.id.activity_main_shops_btn)
-    private Button shopsBtn;
+    Button shopsBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +25,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupShopsBtn() {
-        shopsBtn.setOnClickListener(new View.OnClickListener() {
+        View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Navigator.navigateFromMainActivityToShopsActivity(MainActivity.this);
             }
-        });
+        };
+        shopsBtn.setOnClickListener(listener);
     }
 }
