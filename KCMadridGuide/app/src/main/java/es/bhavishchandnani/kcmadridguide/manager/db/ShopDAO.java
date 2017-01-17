@@ -33,11 +33,6 @@ public class ShopDAO implements DAOPersistable<Shop> {
         this(context, DBHelper.getInstance(context));
     }
 
-    /**
-     * Insert a shop in DB
-     * @param shop shouldn't be null
-     * @return 0  if shop is null, id if insert is OK, INVALID_ID if insert fails
-     */
     @Override
     public long insert(@NonNull Shop shop) {
         if (shop == null) {
@@ -53,7 +48,6 @@ public class ShopDAO implements DAOPersistable<Shop> {
         } finally {
             db.endTransaction();
         }
-
         //db.close();
 
         return id;
@@ -94,34 +88,29 @@ public class ShopDAO implements DAOPersistable<Shop> {
     }
 
     @Override
-    public void update(long id, @NonNull Shop data) {
-
+    public int update(long id, @NonNull Shop shop) {
+        if (shop == null) {
+            return 0;
+        }
+        return db.update(TABLE_SHOP, getContentValues(shop), KEY_SHOP_ID + " = ?" + id, new String[]{"" + id});
     }
- 
+
     @Override
     public int delete(long id) {
-        //db.beginTransaction();
-        //try {
-        return db.delete(TABLE_SHOP, KEY_SHOP_ID + " = " + id, null); // 1st way
-        //db.delete(TABLE_SHOP,  KEY_SHOP_ID + " = ?", new String[]{"" + id}); // 2nd way better to avoid SQLInjection
-        //db.delete(TABLE_SHOP,  KEY_SHOP_ID + " = ? AND " + KEY_SHOP_NAME + "= ?" ,
-        // new String[]{"" + id}); // 2nd way better to avoid SQLInjection
-       //     db.setTransactionSuccessful();  // COMMIT
-       // } finally {
-       //     db.endTransaction();    //FINISH OR ROLLBACK
-        //}
-
+        return db.delete(TABLE_SHOP, KEY_SHOP_ID + " = ?", new String[]{"" + id});
     }
 
     @Override
-    public void deleteAll() {
-     db.beginTransaction();
+    public int deleteAll() {
+        int rowsDeleted = 0;
+        db.beginTransaction();
         try {
-            db.delete(TABLE_SHOP, null, null);
-            db.setTransactionSuccessful();  // COMMIT
+            rowsDeleted = db.delete(TABLE_SHOP, null, null);
+            db.setTransactionSuccessful();
         } finally {
-            db.endTransaction();    //FINISH OR ROLLBACK
+            db.endTransaction();
         }
+        return rowsDeleted;
     }
 
     @Nullable
@@ -152,14 +141,14 @@ public class ShopDAO implements DAOPersistable<Shop> {
             return null;
         }
 
-        Shop shop = getShop(c);
+        Shop shop = getShopFromCursor(c);
 
         return shop;
 
     }
 
     @NonNull
-    public static Shop getShop(Cursor c) {
+    public static Shop getShopFromCursor(final Cursor c) {
         long identifier = c.getLong(c.getColumnIndex(KEY_SHOP_ID));
         String name = c.getString(c.getColumnIndex(KEY_SHOP_NAME));
         Shop shop = new Shop(identifier, name);
@@ -175,11 +164,11 @@ public class ShopDAO implements DAOPersistable<Shop> {
     }
 
     @NonNull
-    public static Shops getShopsFromCursor(Cursor data) {
+    public static Shops getShopsFromCursor(final Cursor data) {
         List<Shop> shopList = new LinkedList<>();
 
         while (data.moveToNext()){
-            Shop shop = getShop(data);
+            Shop shop = getShopFromCursor(data);
             shopList.add(shop);
         }
         return Shops.build(shopList);
@@ -194,11 +183,10 @@ public class ShopDAO implements DAOPersistable<Shop> {
         }
 
         List<Shop> shops = new LinkedList<>();
-        // Idioms
         c.moveToFirst();
         do {
-            shops.add(getShop(c));
-        } // left golden path
+            shops.add(getShopFromCursor(c));
+        }
         while (c.moveToNext());
 
         return shops;
