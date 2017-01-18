@@ -1,4 +1,4 @@
-package es.bhavishchandnani.kcmadridguide.activities;
+package es.bhavishchandnani.kcmadridguide.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
