@@ -92,7 +92,7 @@ public class ShopDAO implements DAOPersistable<Shop> {
         if (shop == null) {
             return 0;
         }
-        return db.update(TABLE_SHOP, getContentValues(shop), KEY_SHOP_ID + " = ?" + id, new String[]{"" + id});
+        return db.update(TABLE_SHOP, getContentValues(shop), KEY_SHOP_ID + " = ?", new String[]{"" + id});
     }
 
     @Override
@@ -134,7 +134,7 @@ public class ShopDAO implements DAOPersistable<Shop> {
     @Override
     public @Nullable Shop query(final long id) {
 
-        Cursor c = db.query(TABLE_SHOP, ALL_COLUMNS, KEY_SHOP_ID +"= " + id, null, KEY_SHOP_ID, null, null);
+        Cursor c = db.query(TABLE_SHOP, ALL_COLUMNS, KEY_SHOP_ID +"= " + id, null, null, null, KEY_SHOP_ID);
         if (c!=null && c.getCount() == 1) {
             c.moveToFirst();
         } else {
@@ -153,7 +153,7 @@ public class ShopDAO implements DAOPersistable<Shop> {
         String name = c.getString(c.getColumnIndex(KEY_SHOP_NAME));
         Shop shop = new Shop(identifier, name);
 
-        shop.setAddress(c.getString(c.getColumnIndex(KEY_SHOP_DESCRIPTION)));
+        shop.setAddress(c.getString(c.getColumnIndex(KEY_SHOP_ADDRESS)));
         shop.setDescription(c.getString(c.getColumnIndex(KEY_SHOP_DESCRIPTION)));
         shop.setImageUrl(c.getString(c.getColumnIndex(KEY_SHOP_IMAGE_URL)));
         shop.setLogoImgUrl(c.getString(c.getColumnIndex(KEY_SHOP_LOGO_URL)));
