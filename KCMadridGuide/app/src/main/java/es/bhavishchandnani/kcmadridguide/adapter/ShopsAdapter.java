@@ -46,7 +46,7 @@ public class ShopsAdapter extends RecyclerView.Adapter<ShopRowViewHolder>{
         row.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d(TAG, "onClick: clicked row " + position);
+                Log.d(TAG, "onClick: clicked row shop in position " + position);
                 if (listener != null){
                     listener.clickedOn(shopViewModel, position);
                 }
