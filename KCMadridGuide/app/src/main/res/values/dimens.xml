@@ -8,5 +8,5 @@
     <dimen name="row_shop_logo_width">80dp</dimen>
     <dimen name="row_shop_logo_height">80dp</dimen>
     <dimen name="row_shop_height">200dp</dimen>
-    <dimen name="row_width">300</dimen>
+    <dimen name="row_width">300dp</dimen>
 </resources>
