@@ -10,7 +10,7 @@
         android:layout_height="@dimen/row_shop_name_height"
         android:layout_centerVertical="true"
         android:gravity="center"
-        tools:text="Un saludito para mi mejor amiguito"/>
+        tools:text="Lorem ipsum"/>
 
     <ImageView
         android:id="@+id/row_shop_logo"
