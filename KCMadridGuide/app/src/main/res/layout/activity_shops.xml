@@ -11,4 +11,10 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="es.bhavishchandnani.kcmadridguide.activity.ShopsActivity">
 
+    <fragment
+        android:id="@+id/activity_shops_fragment_shops"
+        android:name="es.bhavishchandnani.kcmadridguide.fragment.ShopsFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
 </RelativeLayout>
