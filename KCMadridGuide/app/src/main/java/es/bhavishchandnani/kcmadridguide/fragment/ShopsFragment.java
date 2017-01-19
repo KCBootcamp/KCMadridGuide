@@ -42,9 +42,9 @@ public class ShopsFragment extends Fragment {
 
         adapter.setOnElementClickListener(new OnElementClick<Shop>() {
             @Override
-            public void clickedOn(Shop shop, int position) {
+            public void elementClicked(Shop shop, int position) {
                 if (listener != null){
-                    listener.clickedOn(shop,position);
+                    listener.elementClicked(shop, position);
                 }
             }
         });
@@ -63,7 +63,7 @@ public class ShopsFragment extends Fragment {
         return listener;
     }
 
-    public void setListener(OnElementClick<Shop> listener) {
+    public void setOnElementClickListener(OnElementClick<Shop> listener) {
         this.listener = listener;
     }
 

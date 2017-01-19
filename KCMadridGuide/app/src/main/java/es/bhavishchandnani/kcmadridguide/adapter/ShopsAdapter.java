@@ -8,7 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import es.bhavishchandnani.kcmadridguide.R;
+import es.bhavishchandnani.kcmadridguide.model.Shop;
 import es.bhavishchandnani.kcmadridguide.model.Shops;
 import es.bhavishchandnani.kcmadridguide.view.OnElementClick;
 import es.bhavishchandnani.kcmadridguide.view.ShopRowViewHolder;
@@ -21,7 +25,7 @@ public class ShopsAdapter extends RecyclerView.Adapter<ShopRowViewHolder>{
     private final LayoutInflater layoutInflater;
     private final Shops shops;
 
-    private OnElementClick<ShopViewModel> listener;
+    private List<OnElementClick<Shop>> listeners;
 
     public ShopsAdapter(Shops shops, Context context) {
         this.shops = shops;
@@ -35,20 +39,18 @@ public class ShopsAdapter extends RecyclerView.Adapter<ShopRowViewHolder>{
     }
 
     @Override
-    public void onBindViewHolder(ShopRowViewHolder row, final int position) {
+    public void onBindViewHolder(final ShopRowViewHolder row, final int position) {
 
-        final ShopViewModel shopViewModel = new ShopViewModel(
-                shops.get(position).getName(),
-                shops.get(position).getLogoImgUrl());
+        final Shop shop = shops.get(position);
 
-        row.setShop(shopViewModel);
+        row.setShop(new ShopViewModel(shop.getName(), shop.getLogoImgUrl()));
 
         row.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.d(TAG, "onClick: clicked row shop in position " + position);
-                if (listener != null){
-                    listener.clickedOn(shopViewModel, position);
+                for (OnElementClick<Shop> listener: getListeners()) {
+                    listener.elementClicked(shop, position);
                 }
             }
         });
@@ -59,8 +61,17 @@ public class ShopsAdapter extends RecyclerView.Adapter<ShopRowViewHolder>{
         return (int) shops.size();
     }
 
+    public List<OnElementClick<Shop>> getListeners(){
+        if (listeners == null){
+            listeners = new LinkedList<>();
+        }
+        return listeners;
+    }
+
     public void setOnElementClickListener(@NonNull final OnElementClick listener){
-        this.listener =  listener;
+        if (listener != null) {
+            getListeners().add(listener);
+        }
     }
 
 }
