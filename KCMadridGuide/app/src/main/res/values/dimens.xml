@@ -9,4 +9,8 @@
     <dimen name="row_shop_logo_height">80dp</dimen>
     <dimen name="row_shop_height">200dp</dimen>
     <dimen name="row_width">300dp</dimen>
+    <dimen name="large_text_size">20sp</dimen>
+    <dimen name="activity_shop_detail_shop_textview_height">50dp</dimen>
+    <dimen name="activity_shop_detail_shop_logo_width">80dp</dimen>
+    <dimen name="activity_shop_detail_shop_logo_height">80dp</dimen>
 </resources>

@@ -12,7 +12,12 @@ public class DBConstants {
     public static final String KEY_SHOP_LOGO_URL = "LOGO_URL";
     public static final String KEY_SHOP_ADDRESS = "ADDRESS";
     public static final String KEY_SHOP_URL = "URL";
-    public static final String KEY_SHOP_DESCRIPTION = "DESCRIPTION";
+    public static final String KEY_SHOP_TELEPHONE = "TELEPHONE";
+    public static final String KEY_SHOP_EMAIL = "EMAIL";
+    public static final String KEY_SHOP_DESCRIPTION_ES = "DESCRIPTION_ES";
+    public static final String KEY_SHOP_DESCRIPTION_EN = "DESCRIPTION_EN";
+    public static final String KEY_SHOP_OPENINGHOURS_EN = "OPENINGHOURS_EN";
+    public static final String KEY_SHOP_OPENINGHOURS_ES = "OPENINGHOURS_ES";
 
     // Table field constants
     public static final String KEY_SHOP_LATITUDE = "latitude";
@@ -29,7 +34,12 @@ public class DBConstants {
                     + KEY_SHOP_URL + " text,"
                     + KEY_SHOP_LATITUDE + " real,"
                     + KEY_SHOP_LONGITUDE + " real, "
-                    + KEY_SHOP_DESCRIPTION + " text "
+                    + KEY_SHOP_TELEPHONE + " text, "
+                    + KEY_SHOP_EMAIL + " text, "
+                    + KEY_SHOP_DESCRIPTION_ES + " text, "
+                    + KEY_SHOP_DESCRIPTION_EN + " text, "
+                    + KEY_SHOP_OPENINGHOURS_ES + " text, "
+                    + KEY_SHOP_OPENINGHOURS_EN + " text "
                     + ");";
 
     public static final String[] CREATE_DATABASE_SCRIPTS = {
@@ -47,7 +57,12 @@ public class DBConstants {
             KEY_SHOP_URL,
             KEY_SHOP_LATITUDE,
             KEY_SHOP_LONGITUDE,
-            KEY_SHOP_DESCRIPTION,
+            KEY_SHOP_TELEPHONE,
+            KEY_SHOP_EMAIL,
+            KEY_SHOP_DESCRIPTION_ES,
+            KEY_SHOP_DESCRIPTION_EN,
+            KEY_SHOP_OPENINGHOURS_ES,
+            KEY_SHOP_OPENINGHOURS_EN,
     };
 
 }

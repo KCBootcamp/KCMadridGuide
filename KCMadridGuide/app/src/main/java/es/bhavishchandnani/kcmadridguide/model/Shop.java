@@ -1,14 +1,22 @@
 package es.bhavishchandnani.kcmadridguide.model;
 
 
-public class Shop {
+import java.io.Serializable;
+
+public class Shop implements Serializable{
     private long id;
     private String name;
     private String imageUrl;
     private String logoImgUrl;
     private String address;
     private String url;
-    private String description;
+    private String description_es;
+    private String description_en;
+    private String telephone;
+    private String email;
+    private String openingHours_es;
+    private String openingHours_en;
+
     private float latitude;
     private float longitude;
 
@@ -74,15 +82,6 @@ public class Shop {
         return this;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public Shop setDescription(String description) {
-        this.description = description;
-        return this;
-    }
-
     public float getLatitude() {
         return latitude;
     }
@@ -98,6 +97,61 @@ public class Shop {
 
     public Shop setLongitude(float longitude) {
         this.longitude = longitude;
+        return this;
+    }
+
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public Shop setTelephone(String telephone) {
+        this.telephone = telephone;
+        return this;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public Shop setEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public String getDescription_es() {
+        return description_es;
+    }
+
+    public Shop setDescription_es(String description_es) {
+        this.description_es = description_es;
+        return this;
+    }
+
+    public String getDescription_en() {
+        return description_en;
+    }
+
+    public Shop setDescription_en(String description_en) {
+        this.description_en = description_en;
+        return this;
+    }
+
+    public String getOpeningHours_es() {
+        return openingHours_es;
+    }
+
+    public Shop setOpeningHours_es(String openingHours_es) {
+        this.openingHours_es = openingHours_es;
+        return this;
+    }
+
+    public String getOpeningHours_en() {
+        return openingHours_en;
+    }
+
+    public Shop setOpeningHours_en(String openingHours_en) {
+        this.openingHours_en = openingHours_en;
         return this;
     }
 }
