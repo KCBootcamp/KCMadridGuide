@@ -62,13 +62,18 @@ public class ShopDAO implements DAOPersistable<Shop> {
         }
 
         contentValues.put(KEY_SHOP_ADDRESS, shop.getAddress());
-        contentValues.put(KEY_SHOP_DESCRIPTION, shop.getDescription());
         contentValues.put(KEY_SHOP_IMAGE_URL, shop.getImageUrl());
         contentValues.put(KEY_SHOP_LOGO_URL, shop.getLogoImgUrl());
         contentValues.put(KEY_SHOP_LATITUDE, shop.getLatitude());
         contentValues.put(KEY_SHOP_LONGITUDE, shop.getLongitude());
         contentValues.put(KEY_SHOP_NAME, shop.getName());
         contentValues.put(KEY_SHOP_URL, shop.getUrl());
+        contentValues.put(KEY_SHOP_TELEPHONE, shop.getTelephone());
+        contentValues.put(KEY_SHOP_EMAIL, shop.getEmail());
+        contentValues.put(KEY_SHOP_DESCRIPTION_ES, shop.getDescription_es());
+        contentValues.put(KEY_SHOP_DESCRIPTION_EN, shop.getDescription_en());
+        contentValues.put(KEY_SHOP_OPENINGHOURS_EN, shop.getOpeningHours_en());
+        contentValues.put(KEY_SHOP_OPENINGHOURS_ES, shop.getOpeningHours_es());
 
         return contentValues;
     }
@@ -78,12 +83,17 @@ public class ShopDAO implements DAOPersistable<Shop> {
         //shop.setId(contentValues.getAsInteger(KEY_SHOP_ID));
         shop.setName(contentValues.getAsString(KEY_SHOP_NAME));
         shop.setAddress(contentValues.getAsString(KEY_SHOP_ADDRESS));
-        shop.setDescription(contentValues.getAsString(KEY_SHOP_DESCRIPTION));
         shop.setImageUrl(contentValues.getAsString(KEY_SHOP_IMAGE_URL));
         shop.setLogoImgUrl(contentValues.getAsString(KEY_SHOP_LOGO_URL));
         shop.setUrl(contentValues.getAsString(KEY_SHOP_URL));
         shop.setLatitude(contentValues.getAsFloat(KEY_SHOP_LATITUDE));
         shop.setLongitude(contentValues.getAsFloat(KEY_SHOP_LONGITUDE));
+        shop.setTelephone(contentValues.getAsString(KEY_SHOP_TELEPHONE));
+        shop.setEmail(contentValues.getAsString(KEY_SHOP_EMAIL));
+        shop.setDescription_en(contentValues.getAsString(KEY_SHOP_DESCRIPTION_ES));
+        shop.setDescription_es(contentValues.getAsString(KEY_SHOP_DESCRIPTION_EN));
+        shop.setOpeningHours_es(contentValues.getAsString(KEY_SHOP_OPENINGHOURS_ES));
+        shop.setOpeningHours_en(contentValues.getAsString(KEY_SHOP_OPENINGHOURS_EN));
         return shop;
     }
 
@@ -154,12 +164,17 @@ public class ShopDAO implements DAOPersistable<Shop> {
         Shop shop = new Shop(identifier, name);
 
         shop.setAddress(c.getString(c.getColumnIndex(KEY_SHOP_ADDRESS)));
-        shop.setDescription(c.getString(c.getColumnIndex(KEY_SHOP_DESCRIPTION)));
         shop.setImageUrl(c.getString(c.getColumnIndex(KEY_SHOP_IMAGE_URL)));
         shop.setLogoImgUrl(c.getString(c.getColumnIndex(KEY_SHOP_LOGO_URL)));
         shop.setLatitude(c.getFloat(c.getColumnIndex(KEY_SHOP_LATITUDE)));
         shop.setLongitude(c.getFloat(c.getColumnIndex(KEY_SHOP_LONGITUDE)));
         shop.setUrl(c.getString(c.getColumnIndex(KEY_SHOP_URL)));
+        shop.setUrl(c.getString(c.getColumnIndex(KEY_SHOP_TELEPHONE)));
+        shop.setUrl(c.getString(c.getColumnIndex(KEY_SHOP_EMAIL)));
+        shop.setDescription_es(c.getString(c.getColumnIndex(KEY_SHOP_DESCRIPTION_ES)));
+        shop.setDescription_en(c.getString(c.getColumnIndex(KEY_SHOP_DESCRIPTION_EN)));
+        shop.setOpeningHours_es(c.getString(c.getColumnIndex(KEY_SHOP_OPENINGHOURS_ES)));
+        shop.setOpeningHours_en(c.getString(c.getColumnIndex(KEY_SHOP_OPENINGHOURS_EN)));
         return shop;
     }
 

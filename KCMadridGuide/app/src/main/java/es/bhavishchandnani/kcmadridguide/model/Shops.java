@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Shops implements IShopsIteratable, IShopsUpdatable{
+public class Shops implements IIteratable<Shop>, IUpdatable<Shop> {
     List<Shop> shops;
 
     public static @NonNull
@@ -40,7 +40,7 @@ public class Shops implements IShopsIteratable, IShopsUpdatable{
     }
 
     @Override
-    public List<Shop> allShops() {
+    public List<Shop> allItems() {
         return shops;
     }
 
