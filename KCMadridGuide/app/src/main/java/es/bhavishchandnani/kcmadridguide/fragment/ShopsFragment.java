@@ -29,8 +29,8 @@ public class ShopsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_shops, container, false);
-        shopsRecyclerView = (RecyclerView) view.findViewById(R.id.shops_recycler_view);
+        View view = inflater.inflate(R.layout.fragment_recycler_view, container, false);
+        shopsRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         shopsRecyclerView.setLayoutManager(new GridAutofitLayoutManager(getActivity(), Math.round(getResources().getDimension(R.dimen.row_width))));
 
         return view;
