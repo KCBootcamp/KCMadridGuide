@@ -11,4 +11,11 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="es.bhavishchandnani.kcmadridguide.activity.MadridActivitiesActivity">
 
+
+    <fragment
+        android:id="@+id/activity_madrid_activities_fragment_activities"
+        android:name="es.bhavishchandnani.kcmadridguide.fragment.MadridActivitiesFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
 </RelativeLayout>
