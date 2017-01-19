@@ -25,6 +25,9 @@
         <provider
             android:name=".manager.db.provider.MadridGuideProvider"
             android:authorities="es.bhavishchandnani.kcmadridguide.provider"/>
+
+        <activity android:name=".activity.MadridActivitiesActivity">
+        </activity>
     </application>
 
 </manifest>
