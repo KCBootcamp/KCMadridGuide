@@ -13,6 +13,8 @@ import es.bhavishchandnani.kcmadridguide.navigator.Navigator;
 public class MainActivity extends AppCompatActivity {
     @BindView(R.id.activity_main_shops_btn)
     Button shopsBtn;
+    @BindView(R.id.activity_main_activities_btn)
+    Button activitiesBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +23,17 @@ public class MainActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
         setupShopsBtn();
+        setupActivitiesBtn();
 
+    }
+
+    private void setupActivitiesBtn() {
+        View.OnClickListener listener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            }
+        };
+        activitiesBtn.setOnClickListener(listener);
     }
 
     private void setupShopsBtn() {
