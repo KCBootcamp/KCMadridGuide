@@ -4,8 +4,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import es.bhavishchandnani.kcmadridguide.R;
+import es.bhavishchandnani.kcmadridguide.fragment.MadridActivitiesFragment;
 
 public class MadridActivitiesActivity extends AppCompatActivity {
+
+    private MadridActivitiesFragment madridActivitiesFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
