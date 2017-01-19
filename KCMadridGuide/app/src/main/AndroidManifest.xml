@@ -18,6 +18,13 @@
         </activity>
         <activity android:name=".activity.ShopsActivity">
         </activity>
+        <activity android:name=".activity.ShopDetailActivity">
+        </activity>
+
+        <!-- Content provider -->
+        <provider
+            android:name=".manager.db.provider.MadridGuideProvider"
+            android:authorities="es.bhavishchandnani.kcmadridguide.provider"/>
     </application>
 
 </manifest>
