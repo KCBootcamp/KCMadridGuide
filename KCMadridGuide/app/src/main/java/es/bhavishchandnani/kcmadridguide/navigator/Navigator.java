@@ -2,6 +2,7 @@ package es.bhavishchandnani.kcmadridguide.navigator;
 
 import android.content.Intent;
 
+import es.bhavishchandnani.kcmadridguide.activity.MadridActivitiesActivity;
 import es.bhavishchandnani.kcmadridguide.activity.MainActivity;
 import es.bhavishchandnani.kcmadridguide.activity.ShopDetailActivity;
 import es.bhavishchandnani.kcmadridguide.activity.ShopsActivity;
@@ -21,6 +22,12 @@ public class Navigator {
         final Intent intent = new Intent(shopsActivity, ShopDetailActivity.class);
         intent.putExtra(INTENT_KEY_SHOP_DETAIL, shop);
         shopsActivity.startActivity(intent);
+        return intent;
+    }
+
+    public static Intent navigateFromMainActivityToMAdridACtivitiesActivity(MainActivity mainActivity) {
+        final Intent intent = new Intent(mainActivity, MadridActivitiesActivity.class);
+        mainActivity.startActivity(intent);
         return intent;
     }
 }

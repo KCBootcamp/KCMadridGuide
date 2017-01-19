@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Navigator.navigateFromMainActivityToMAdridACtivitiesActivity(MainActivity.this);
             }
         };
         activitiesBtn.setOnClickListener(listener);
