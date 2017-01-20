@@ -10,11 +10,11 @@ import es.bhavishchandnani.kcmadridguide.utils.MainThread;
 
 public class CacheAllActivitiesInteractor {
     private boolean success;
-    public interface CacheAllShopsInteractorResponse{
+    public interface CacheAllActivitiesInteractorResponse{
         public void response(boolean success);
     }
 
-    public void execute(final Context context, final MadridActivities activities, final CacheAllShopsInteractorResponse response) {
+    public void execute(final Context context, final MadridActivities activities, final CacheAllActivitiesInteractorResponse response) {
 
         new Thread(new Runnable() {
             @Override
