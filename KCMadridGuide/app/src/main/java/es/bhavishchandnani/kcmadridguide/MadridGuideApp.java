@@ -7,8 +7,11 @@ import com.squareup.picasso.Picasso;
 
 import java.lang.ref.WeakReference;
 
+import es.bhavishchandnani.kcmadridguide.interactor.CacheAllActivitiesInteractor;
 import es.bhavishchandnani.kcmadridguide.interactor.CacheAllShopsInteractor;
+import es.bhavishchandnani.kcmadridguide.interactor.GetAllActivitiesInteractor;
 import es.bhavishchandnani.kcmadridguide.interactor.GetAllShopsInteractor;
+import es.bhavishchandnani.kcmadridguide.model.MadridActivities;
 import es.bhavishchandnani.kcmadridguide.model.Shops;
 
 
@@ -32,8 +35,26 @@ public class MadridGuideApp extends Application {
                         CacheShops(shops);
                     }
                 });
+        new GetAllActivitiesInteractor().execute(getApplicationContext(),
+                new GetAllActivitiesInteractor.GetAllActivitiesInteractorResponse() {
+                    @Override
+                    public void response(MadridActivities madridActivities) {
+                        CacheActivities(madridActivities);
+                    }
+                });
+
         Picasso.with(getApplicationContext()).setLoggingEnabled(true);
         Picasso.with(getApplicationContext()).setIndicatorsEnabled(true);
+    }
+
+    private void CacheActivities(MadridActivities madridActivities) {
+        new CacheAllActivitiesInteractor().execute(getApplicationContext(), madridActivities, new CacheAllActivitiesInteractor.CacheAllActivitiesInteractorResponse() {
+            @Override
+            public void response(boolean success) {
+                // Por ejemplo: Actualizar fecha del ultimo cacheo
+                // Ocultar el progressBar
+            }
+        });
     }
 
     private void CacheShops(Shops shops) {
