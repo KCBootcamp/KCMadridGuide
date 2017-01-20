@@ -17,6 +17,8 @@ public class ShopEntity {
     @SerializedName("opening_hours_es") private String openingHoursEs;
     @SerializedName("telephone") private String telephone;
     @SerializedName("email") private String email;
+    @SerializedName("latitude") private float latitude;
+    @SerializedName("longitude") private float longitude;
 
     public Long getId() {
         return id;
@@ -64,5 +66,13 @@ public class ShopEntity {
 
     public String getEmail() {
         return email;
+    }
+
+    public float getLatitude() {
+        return latitude;
+    }
+
+    public float getLongitude() {
+        return longitude;
     }
 }

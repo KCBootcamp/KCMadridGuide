@@ -3,6 +3,8 @@ package es.bhavishchandnani.kcmadridguide.interactor;
 
 import android.content.Context;
 
+import com.squareup.picasso.Picasso;
+
 import es.bhavishchandnani.kcmadridguide.manager.db.MadridActivityDAO;
 import es.bhavishchandnani.kcmadridguide.model.MadridActivities;
 import es.bhavishchandnani.kcmadridguide.model.MadridActivity;
@@ -23,6 +25,8 @@ public class CacheAllActivitiesInteractor {
                 success = true;
                 for (MadridActivity activity: activities.allItems()){
                     success = dao.insert(activity) > 0;
+                    Picasso.with(context).load(activity.getLogoImgUrl()).fetch();
+                    Picasso.with(context).load(activity.getImageUrl()).fetch();
                     if(!success){
                         break;
                     }

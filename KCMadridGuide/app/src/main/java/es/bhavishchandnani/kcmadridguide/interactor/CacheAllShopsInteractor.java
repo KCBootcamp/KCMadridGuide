@@ -3,6 +3,8 @@ package es.bhavishchandnani.kcmadridguide.interactor;
 
 import android.content.Context;
 
+import com.squareup.picasso.Picasso;
+
 import es.bhavishchandnani.kcmadridguide.manager.db.ShopDAO;
 import es.bhavishchandnani.kcmadridguide.model.Shop;
 import es.bhavishchandnani.kcmadridguide.model.Shops;
@@ -23,6 +25,8 @@ public class CacheAllShopsInteractor {
                 success = true;
                 for (Shop shop: shops.allItems()){
                     success = dao.insert(shop) > 0;
+                    Picasso.with(context).load(shop.getLogoImgUrl()).fetch();
+                    Picasso.with(context).load(shop.getImageUrl()).fetch();
                     if(!success){
                         break;
                     }

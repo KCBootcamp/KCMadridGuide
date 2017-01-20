@@ -23,7 +23,9 @@ public class ShopEntityShopMapper {
                     .setEmail(entity.getEmail())
                     .setImageUrl(entity.getImg())
                     .setLogoImgUrl(entity.getLogoImg())
-                    .setUrl(entity.getUrl());
+                    .setUrl(entity.getUrl())
+                    .setLatitude(entity.getLatitude())
+                    .setLongitude(entity.getLongitude());
             shopList.add(shop);
         }
         return shopList;

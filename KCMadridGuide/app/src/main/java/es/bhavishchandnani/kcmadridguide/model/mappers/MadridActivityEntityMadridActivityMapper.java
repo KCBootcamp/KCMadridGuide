@@ -23,7 +23,9 @@ public class MadridActivityEntityMadridActivityMapper {
                     .setEmail(entity.getEmail())
                     .setImageUrl(entity.getImg())
                     .setLogoImgUrl(entity.getLogoImg())
-                    .setUrl(entity.getUrl());
+                    .setUrl(entity.getUrl())
+                    .setLatitude(entity.getLatitude())
+                    .setLongitude(entity.getLongitude());
             activityList.add(activity);
         }
         return activityList;
