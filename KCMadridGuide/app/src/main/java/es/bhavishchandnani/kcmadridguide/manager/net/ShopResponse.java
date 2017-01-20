@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class Response<T> {
+public class ShopResponse {
     @SerializedName("result")
-    List<T> result;
+    List<ShopEntity> result;
 }
