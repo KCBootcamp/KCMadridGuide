@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Image display in background in select stateStringId -->
+    <item android:drawable="@color/colorPrimary" android:state_pressed="true"/>
+
+    <!-- Image display in background in select stateStringId -->
+    <item android:drawable="@color/colorPrimary" android:state_focused="true"/>
+
+    <!-- Image display in background in disable stateStringId -->
+    <item android:drawable="@color/colorPrimaryDark" android:state_enabled="false"/>
+
+    <!-- Default stateStringId -->
+    <item android:drawable="@android:color/transparent"/>
+</selector>
