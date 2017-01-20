@@ -42,7 +42,7 @@ public class ShopDAO implements DAOPersistable<Shop> {
         db.beginTransaction();
         long id = DBHelper.INVALID_ID;
         try {
-            id = db.insert(TABLE_SHOP, KEY_SHOP_NAME, this.getContentValues(shop));
+            id = db.insert(TABLE_SHOP, KEY_NAME, this.getContentValues(shop));
             shop.setId(id);
             db.setTransactionSuccessful();
         } finally {
@@ -61,39 +61,39 @@ public class ShopDAO implements DAOPersistable<Shop> {
             return contentValues;
         }
 
-        contentValues.put(KEY_SHOP_ADDRESS, shop.getAddress());
-        contentValues.put(KEY_SHOP_IMAGE_URL, shop.getImageUrl());
-        contentValues.put(KEY_SHOP_LOGO_URL, shop.getLogoImgUrl());
-        contentValues.put(KEY_SHOP_LATITUDE, shop.getLatitude());
-        contentValues.put(KEY_SHOP_LONGITUDE, shop.getLongitude());
-        contentValues.put(KEY_SHOP_NAME, shop.getName());
-        contentValues.put(KEY_SHOP_URL, shop.getUrl());
-        contentValues.put(KEY_SHOP_TELEPHONE, shop.getTelephone());
-        contentValues.put(KEY_SHOP_EMAIL, shop.getEmail());
-        contentValues.put(KEY_SHOP_DESCRIPTION_ES, shop.getDescription_es());
-        contentValues.put(KEY_SHOP_DESCRIPTION_EN, shop.getDescription_en());
-        contentValues.put(KEY_SHOP_OPENINGHOURS_EN, shop.getOpeningHours_en());
-        contentValues.put(KEY_SHOP_OPENINGHOURS_ES, shop.getOpeningHours_es());
+        contentValues.put(KEY_ADDRESS, shop.getAddress());
+        contentValues.put(KEY_IMAGE_URL, shop.getImageUrl());
+        contentValues.put(KEY_LOGO_URL, shop.getLogoImgUrl());
+        contentValues.put(KEY_LATITUDE, shop.getLatitude());
+        contentValues.put(KEY_LONGITUDE, shop.getLongitude());
+        contentValues.put(KEY_NAME, shop.getName());
+        contentValues.put(KEY_URL, shop.getUrl());
+        contentValues.put(KEY_TELEPHONE, shop.getTelephone());
+        contentValues.put(KEY_EMAIL, shop.getEmail());
+        contentValues.put(KEY_DESCRIPTION_ES, shop.getDescription_es());
+        contentValues.put(KEY_DESCRIPTION_EN, shop.getDescription_en());
+        contentValues.put(KEY_OPENINGHOURS_EN, shop.getOpeningHours_en());
+        contentValues.put(KEY_OPENINGHOURS_ES, shop.getOpeningHours_es());
 
         return contentValues;
     }
 
     public static @NonNull Shop getShopFromContentValues(final @NonNull ContentValues contentValues){
         final Shop shop = new Shop(1, "");
-        //shop.setId(contentValues.getAsInteger(KEY_SHOP_ID));
-        shop.setName(contentValues.getAsString(KEY_SHOP_NAME));
-        shop.setAddress(contentValues.getAsString(KEY_SHOP_ADDRESS));
-        shop.setImageUrl(contentValues.getAsString(KEY_SHOP_IMAGE_URL));
-        shop.setLogoImgUrl(contentValues.getAsString(KEY_SHOP_LOGO_URL));
-        shop.setUrl(contentValues.getAsString(KEY_SHOP_URL));
-        shop.setLatitude(contentValues.getAsFloat(KEY_SHOP_LATITUDE));
-        shop.setLongitude(contentValues.getAsFloat(KEY_SHOP_LONGITUDE));
-        shop.setTelephone(contentValues.getAsString(KEY_SHOP_TELEPHONE));
-        shop.setEmail(contentValues.getAsString(KEY_SHOP_EMAIL));
-        shop.setDescription_en(contentValues.getAsString(KEY_SHOP_DESCRIPTION_ES));
-        shop.setDescription_es(contentValues.getAsString(KEY_SHOP_DESCRIPTION_EN));
-        shop.setOpeningHours_es(contentValues.getAsString(KEY_SHOP_OPENINGHOURS_ES));
-        shop.setOpeningHours_en(contentValues.getAsString(KEY_SHOP_OPENINGHOURS_EN));
+        //shop.setId(contentValues.getAsInteger(KEY_ID));
+        shop.setName(contentValues.getAsString(KEY_NAME));
+        shop.setAddress(contentValues.getAsString(KEY_ADDRESS));
+        shop.setImageUrl(contentValues.getAsString(KEY_IMAGE_URL));
+        shop.setLogoImgUrl(contentValues.getAsString(KEY_LOGO_URL));
+        shop.setUrl(contentValues.getAsString(KEY_URL));
+        shop.setLatitude(contentValues.getAsFloat(KEY_LATITUDE));
+        shop.setLongitude(contentValues.getAsFloat(KEY_LONGITUDE));
+        shop.setTelephone(contentValues.getAsString(KEY_TELEPHONE));
+        shop.setEmail(contentValues.getAsString(KEY_EMAIL));
+        shop.setDescription_en(contentValues.getAsString(KEY_DESCRIPTION_ES));
+        shop.setDescription_es(contentValues.getAsString(KEY_DESCRIPTION_EN));
+        shop.setOpeningHours_es(contentValues.getAsString(KEY_OPENINGHOURS_ES));
+        shop.setOpeningHours_en(contentValues.getAsString(KEY_OPENINGHOURS_EN));
         return shop;
     }
 
@@ -102,12 +102,12 @@ public class ShopDAO implements DAOPersistable<Shop> {
         if (shop == null) {
             return 0;
         }
-        return db.update(TABLE_SHOP, getContentValues(shop), KEY_SHOP_ID + " = ?", new String[]{"" + id});
+        return db.update(TABLE_SHOP, getContentValues(shop), KEY_ID + " = ?", new String[]{"" + id});
     }
 
     @Override
     public int delete(long id) {
-        return db.delete(TABLE_SHOP, KEY_SHOP_ID + " = ?", new String[]{"" + id});
+        return db.delete(TABLE_SHOP, KEY_ID + " = ?", new String[]{"" + id});
     }
 
     @Override
@@ -126,7 +126,7 @@ public class ShopDAO implements DAOPersistable<Shop> {
     @Nullable
     @Override
     public Cursor queryCursor() {
-        Cursor c = db.query(TABLE_SHOP, ALL_COLUMNS, null, null, null, null, KEY_SHOP_ID);
+        Cursor c = db.query(TABLE_SHOP, ALL_COLUMNS, null, null, null, null, KEY_ID);
         if (c!=null && c.getCount() > 0) {
             c.moveToFirst();
         }
@@ -134,7 +134,7 @@ public class ShopDAO implements DAOPersistable<Shop> {
     }
 
     public Cursor queryCursor(long id) {
-        Cursor c = db.query(TABLE_SHOP, ALL_COLUMNS, KEY_SHOP_ID + "= " + id, null, null, null, KEY_SHOP_ID);
+        Cursor c = db.query(TABLE_SHOP, ALL_COLUMNS, KEY_ID + "= " + id, null, null, null, KEY_ID);
         if (c!=null && c.getCount() > 0) {
             c.moveToFirst();
         }
@@ -144,7 +144,7 @@ public class ShopDAO implements DAOPersistable<Shop> {
     @Override
     public @Nullable Shop query(final long id) {
 
-        Cursor c = db.query(TABLE_SHOP, ALL_COLUMNS, KEY_SHOP_ID +"= " + id, null, null, null, KEY_SHOP_ID);
+        Cursor c = db.query(TABLE_SHOP, ALL_COLUMNS, KEY_ID +"= " + id, null, null, null, KEY_ID);
         if (c!=null && c.getCount() == 1) {
             c.moveToFirst();
         } else {
@@ -159,22 +159,22 @@ public class ShopDAO implements DAOPersistable<Shop> {
 
     @NonNull
     public static Shop getShopFromCursor(final Cursor c) {
-        long identifier = c.getLong(c.getColumnIndex(KEY_SHOP_ID));
-        String name = c.getString(c.getColumnIndex(KEY_SHOP_NAME));
+        long identifier = c.getLong(c.getColumnIndex(KEY_ID));
+        String name = c.getString(c.getColumnIndex(KEY_NAME));
         Shop shop = new Shop(identifier, name);
 
-        shop.setAddress(c.getString(c.getColumnIndex(KEY_SHOP_ADDRESS)));
-        shop.setImageUrl(c.getString(c.getColumnIndex(KEY_SHOP_IMAGE_URL)));
-        shop.setLogoImgUrl(c.getString(c.getColumnIndex(KEY_SHOP_LOGO_URL)));
-        shop.setLatitude(c.getFloat(c.getColumnIndex(KEY_SHOP_LATITUDE)));
-        shop.setLongitude(c.getFloat(c.getColumnIndex(KEY_SHOP_LONGITUDE)));
-        shop.setUrl(c.getString(c.getColumnIndex(KEY_SHOP_URL)));
-        shop.setUrl(c.getString(c.getColumnIndex(KEY_SHOP_TELEPHONE)));
-        shop.setUrl(c.getString(c.getColumnIndex(KEY_SHOP_EMAIL)));
-        shop.setDescription_es(c.getString(c.getColumnIndex(KEY_SHOP_DESCRIPTION_ES)));
-        shop.setDescription_en(c.getString(c.getColumnIndex(KEY_SHOP_DESCRIPTION_EN)));
-        shop.setOpeningHours_es(c.getString(c.getColumnIndex(KEY_SHOP_OPENINGHOURS_ES)));
-        shop.setOpeningHours_en(c.getString(c.getColumnIndex(KEY_SHOP_OPENINGHOURS_EN)));
+        shop.setAddress(c.getString(c.getColumnIndex(KEY_ADDRESS)));
+        shop.setImageUrl(c.getString(c.getColumnIndex(KEY_IMAGE_URL)));
+        shop.setLogoImgUrl(c.getString(c.getColumnIndex(KEY_LOGO_URL)));
+        shop.setLatitude(c.getFloat(c.getColumnIndex(KEY_LATITUDE)));
+        shop.setLongitude(c.getFloat(c.getColumnIndex(KEY_LONGITUDE)));
+        shop.setUrl(c.getString(c.getColumnIndex(KEY_URL)));
+        shop.setUrl(c.getString(c.getColumnIndex(KEY_TELEPHONE)));
+        shop.setUrl(c.getString(c.getColumnIndex(KEY_EMAIL)));
+        shop.setDescription_es(c.getString(c.getColumnIndex(KEY_DESCRIPTION_ES)));
+        shop.setDescription_en(c.getString(c.getColumnIndex(KEY_DESCRIPTION_EN)));
+        shop.setOpeningHours_es(c.getString(c.getColumnIndex(KEY_OPENINGHOURS_ES)));
+        shop.setOpeningHours_en(c.getString(c.getColumnIndex(KEY_OPENINGHOURS_EN)));
         return shop;
     }
 
