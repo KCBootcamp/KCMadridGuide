@@ -1,10 +1,16 @@
 package es.bhavishchandnani.kcmadridguide.activity;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 
 import es.bhavishchandnani.kcmadridguide.R;
 import es.bhavishchandnani.kcmadridguide.fragment.MadridActivitiesFragment;
+import es.bhavishchandnani.kcmadridguide.interactor.LoadAllActivitiesFromLocalCacheInteractor;
+import es.bhavishchandnani.kcmadridguide.model.MadridActivities;
+import es.bhavishchandnani.kcmadridguide.model.MadridActivity;
+import es.bhavishchandnani.kcmadridguide.navigator.Navigator;
+import es.bhavishchandnani.kcmadridguide.view.OnElementClick;
 
 public class MadridActivitiesActivity extends AppCompatActivity {
 
@@ -15,13 +21,12 @@ public class MadridActivitiesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_madrid_activities);
 
-        //madridActivitiesFragment = (MadridActivitiesFragment) getSupportFragmentManager().findFragmentById(R.id.activity_shops_fragment_shops);
+        madridActivitiesFragment = (MadridActivitiesFragment) getSupportFragmentManager().findFragmentById(R.id.activity_madrid_activities_fragment_activities);
 
-        //new LoadAllActivitiesFromLocalCacheInteractor().execute(this, getLoadAllCacheActivitiesInteractorResponse());
+        new LoadAllActivitiesFromLocalCacheInteractor().execute(this, getLoadAllCacheActivitiesInteractorResponse());
 
     }
-    //TODO use it for activities
-/*
+
     @NonNull
     private LoadAllActivitiesFromLocalCacheInteractor.LoadAllActivitiesFromLocalCacheInteractorResponse getLoadAllCacheActivitiesInteractorResponse() {
         return new LoadAllActivitiesFromLocalCacheInteractor.LoadAllActivitiesFromLocalCacheInteractorResponse() {
@@ -29,13 +34,13 @@ public class MadridActivitiesActivity extends AppCompatActivity {
             public void response(MadridActivities activities) {
                 madridActivitiesFragment.setActivities(activities);
 
-                shopsFragment.setOnElementClickListener(new OnElementClick<Shop>() {
+                madridActivitiesFragment.setOnElementClickListener(new OnElementClick<MadridActivity>() {
                     @Override
-                    public void elementClicked(Shop shop, int position) {
-                        Navigator.navigateFromShopsActivityToShopDetailActivity(ShopsActivity.this, shop);
+                    public void elementClicked(MadridActivity activity, int position) {
+                        Navigator.navigateFromMadridActivitiesActivityActivityToMadriActivityDetailActivity(MadridActivitiesActivity.this, activity);
                     }
                 });
             }
         };
-    }*/
+    }
 }

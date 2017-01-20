@@ -28,6 +28,8 @@
 
         <activity android:name=".activity.MadridActivitiesActivity">
         </activity>
+        <activity android:name=".activity.MadridActivityDetailActivity">
+        </activity>
     </application>
 
 </manifest>

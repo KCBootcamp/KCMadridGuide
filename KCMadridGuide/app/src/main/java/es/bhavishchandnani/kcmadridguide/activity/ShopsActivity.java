@@ -29,27 +29,8 @@ public class ShopsActivity extends AppCompatActivity implements LoaderManager.Lo
         shopsFragment = (ShopsFragment) getSupportFragmentManager().findFragmentById(R.id.activity_shops_fragment_shops);
         LoaderManager loaderManager = getSupportLoaderManager();
         loaderManager.initLoader(0, null, this);
-        //new LoadAllShopsFromLocalCacheInteractor().execute(this, getLoadAllCacheShopsInteractorResponse());
-
     }
-    //TODO use it for activities
-/*
-    @NonNull
-    private LoadAllShopsFromLocalCacheInteractor.LoadAllShopsFromLocalCacheInteractorResponse getLoadAllCacheShopsInteractorResponse() {
-        return new LoadAllShopsFromLocalCacheInteractor.LoadAllShopsFromLocalCacheInteractorResponse() {
-            @Override
-            public void response(Shops shops) {
-                shopsFragment.setShops(shops);
 
-                shopsFragment.setOnElementClickListener(new OnElementClick<Shop>() {
-                    @Override
-                    public void elementClicked(Shop shop, int position) {
-                        Navigator.navigateFromShopsActivityToShopDetailActivity(ShopsActivity.this, shop);
-                    }
-                });
-            }
-        };
-    }*/
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
