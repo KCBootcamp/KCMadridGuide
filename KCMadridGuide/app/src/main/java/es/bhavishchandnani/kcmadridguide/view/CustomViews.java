@@ -55,12 +55,14 @@ public class CustomViews {
                         dialogListener.OnPositiveClick();
                     }
                 })
-                .setNegativeButton(negativeBtnText, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialogListener.OnNegativeClick();
-                    }
-                })
                 .setIcon(iconId);
+        if(negativeBtnText !=0) {
+            builder.setNegativeButton(negativeBtnText, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    dialogListener.OnNegativeClick();
+                }
+            });
+        }
         return builder.create();
     }
 }
