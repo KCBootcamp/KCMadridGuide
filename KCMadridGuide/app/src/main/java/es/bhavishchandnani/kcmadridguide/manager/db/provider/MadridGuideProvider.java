@@ -9,7 +9,9 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.support.annotation.Nullable;
 
+import es.bhavishchandnani.kcmadridguide.manager.db.MadridActivityDAO;
 import es.bhavishchandnani.kcmadridguide.manager.db.ShopDAO;
+import es.bhavishchandnani.kcmadridguide.model.MadridActivity;
 import es.bhavishchandnani.kcmadridguide.model.Shop;
 
 
@@ -51,7 +53,7 @@ public class MadridGuideProvider extends ContentProvider {
         // Open the database.
 
        ShopDAO dao = new ShopDAO(getContext());
-       //ActivityDAO activityDAO = new ActivityDAO(getContext());
+       MadridActivityDAO activityDAO = new MadridActivityDAO(getContext());
         // Replace these with valid SQL statements if necessary.
         String groupBy = null;
         String having = null;
@@ -70,10 +72,10 @@ public class MadridGuideProvider extends ContentProvider {
                 break;
             case SINGLE_ACTIVITY :
                 rowID = uri.getPathSegments().get(1);
-                //cursor = activityDAO.queryCursor(Long.parseLong(rowID));
+                cursor = activityDAO.queryCursor(Long.parseLong(rowID));
                 break;
             case ALL_ACTIVITIES:
-                //cursor = activityDAO.queryCursor();
+                cursor = activityDAO.queryCursor();
                 break;
             default: break;
         }
@@ -131,11 +133,11 @@ public class MadridGuideProvider extends ContentProvider {
             case ALL_ACTIVITIES:
                 // Open a read / write database to support the transaction.
 
-                //ActivityDAO activityDAO = new ActivityDAO(getContext());
+                MadridActivityDAO activityDAO = new MadridActivityDAO(getContext());
 
                 // Insert the values into the table
-                //ActivityMadrid activityMadrid = ActivityDAO.getActivityFromContentValues(contentValues);
-                //id = activityDAO.insert(activityMadrid);
+                MadridActivity activityMadrid = MadridActivityDAO.getMadridActivityFromContentValues(contentValues);
+                id = activityDAO.insert(activityMadrid);
                 break;
             default:
                 break;
@@ -158,7 +160,6 @@ public class MadridGuideProvider extends ContentProvider {
             default:
                 break;
         }
-
         // Notify any observers of the change in the data set.
         getContext().getContentResolver().notifyChange(uri, null);
         getContext().getContentResolver().notifyChange(insertedUri, null);
@@ -172,7 +173,7 @@ public class MadridGuideProvider extends ContentProvider {
         //content://es.bhavishchandnani.madridguide.provider/shops/212
         // Open a read / write database to support the transaction.
         ShopDAO dao = new ShopDAO(getContext());
-        //ActivityDAO activityDAO = new ActivityDAO(getContext());
+        MadridActivityDAO activityDAO = new MadridActivityDAO(getContext());
         int deleteCount = 0;
 
         String rowID;
@@ -187,10 +188,10 @@ public class MadridGuideProvider extends ContentProvider {
                 break;
             case SINGLE_ACTIVITY:
                 rowID = uri.getPathSegments().get(1);
-                deleteCount = dao.delete(Long.parseLong(rowID));
+                deleteCount = activityDAO.delete(Long.parseLong(rowID));
                 break;
             case ALL_ACTIVITIES:
-                deleteCount = dao.deleteAll();
+                deleteCount = activityDAO.deleteAll();
                 break;
             default:
                 break;
@@ -206,6 +207,7 @@ public class MadridGuideProvider extends ContentProvider {
     @Override
     public int update(Uri uri, ContentValues contentValues, String s, String[] strings) {
         int updateResult = 0;
+        String rowID;
         switch (uriMatcher.match(uri)) {
             case SINGLE_SHOP:
                 // Open a read / write database to support the transaction.
@@ -214,17 +216,18 @@ public class MadridGuideProvider extends ContentProvider {
 
                 // Insert the values into the table
                 Shop shop = ShopDAO.getShopFromContentValues(contentValues);
-                String rowID = uri.getPathSegments().get(1);
+                rowID = uri.getPathSegments().get(1);
                 updateResult = dao.update(Long.parseLong(rowID), shop);
                 break;
             case SINGLE_ACTIVITY:
                 // Open a read / write database to support the transaction.
 
-                //ActivityDAO activityDAO = new ActivityDAO(getContext());
+                MadridActivityDAO activityDAO = new MadridActivityDAO(getContext());
 
                 // Insert the values into the table
-                //ActivityMadrid activityMadrid = ActivityDAO.getActivityFromContentValues(contentValues);
-                //id = activityDAO.update(activityMadrid.getId(), activityMadrid);
+                MadridActivity activityMadrid = activityDAO.getMadridActivityFromContentValues(contentValues);
+                rowID = uri.getPathSegments().get(1);
+                updateResult = activityDAO.update(Long.parseLong(rowID), activityMadrid);
                 break;
             default:
                 break;
