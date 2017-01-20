@@ -7,4 +7,8 @@
     <string name="shops_url">http://madrid-shops.com/json_new/getShops.php</string>
     <string name="activity_main_activities_btn_text">Activities</string>
     <string name="activities_url">http://madrid-shops.com/json_new/getActivities.php</string>
+    <string name="check_conection_dialog_title">Check your connection</string>
+    <string name="check_conection_dialog_message">There is not internet connection available, please check your device connection settings</string>
+    <string name="error_loading_dialog_title">Error Downloading Data</string>
+    <string name="error_loading_dialog_message">There has been an error during the download</string>
 </resources>
